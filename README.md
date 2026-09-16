@@ -1,4 +1,4 @@
-# Reserva-de-Mesas
+# BD-Reserva-de-Mesas
 
 # **Sobre o repositório:**                                                                                                                                                                                                    
 * Esse projeto contém o Banco de Dados criado para o Trabalho Interdisciplinar do 3º semestre na matéria de Banco de Dados.  
