@@ -2,18 +2,20 @@ create database gestaoReserva
 go
 use gestaoReserva
 go
-create table pessoas
+alter table pessoas
 (
 	codigo	int			not null primary key identity,
 	nome	varchar(50) not null, 
-	cpf		varchar(20) not null unique
+	cpf		varchar(20) not null unique,
+	email	varchar(100)not null,
+	senha	varchar(30) not null
 )
 go
 
 create table clientes
 (
 	pessoa_codigo int		  not null primary key,
-	fone		  varchar(20) not null unique,
+	telefone		  varchar(20) not null unique,
 	--------Restrições---------
 	constraint  fk_cliente_codigo
 	foreign key (pessoa_codigo) references pessoas(codigo)
@@ -23,8 +25,7 @@ go
 create table funcionarios
 (
 	pessoa_codigo int		  not null primary key,
-	usuario		  varchar(50) not null,
-	senha		  varchar(20) not null,
+	id_cargo	      varchar(20) not null
 	---------Restrições---------
 	constraint  fk_funcionario_codigo
 	foreign key (pessoa_codigo) references pessoas(codigo) 
@@ -35,26 +36,18 @@ create table ambientes
 (
 	codigo		int			not null primary key,
 	nome		varchar(50) not null
-)
-go
-
-create table status
-(
-	id		int					check(id in(0,1,2))   primary key,
-	nome	varchar(20) not null
+	status		varchar(20)		null,
+	capacidade	int			not null
 )
 go
 
 create table mesas
 (
 	nr						int not null primary key,
-	qtd_cadeiras			int not null, 
+	qtd_lugares			int not null, 
 	numero_reservas			int not null,
-	id_status				int not null,
 	codigo_ambientes		int not null
-	---Restrições----------
-	constraint fk_id_status 
-	foreign key(id_status)		 references status(id),
+	---Restrições----------	
 	constraint fk_codigo_ambientes
 	foreign key(codigo_ambientes) references ambientes(codigo)
 
@@ -64,7 +57,7 @@ go
 create table reservas
 (
 	numero		int  not null primary key,
-	nr_mesas	int not null,
+	qtd_pessoas	int not null,
 	horario		time not null default cast(current_timestamp as time),
 	dia			date not null,
 	status		int		     check(status in(0,1,2)),
@@ -79,7 +72,7 @@ go
 create table Reservas_Mesas
 (	
 	numero_reservas int not null, 
-	nr_mesas		int not null
+	qtd_mesas		int not null
 	
 		-----Restrições------
 	constraint pk_reservas_mesas primary key(numero_reservas, nr_mesas)
