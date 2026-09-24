@@ -1,8 +1,7 @@
 # BD-Reserva-de-Mesas
 
-# **Sobre o repositório:**                                                                                                                                                                                                    
-* Esse projeto contém o Banco de Dados criado para o Trabalho Interdisciplinar do 3º semestre na matéria de Banco de Dados.  
-Consiste em um banco que armazena informações sobre clientes, funcionários, mesas e reservas para um funcionamento básico de restaurantes. 
+# **Sobre o projeto:**                                                                                                                                                                                                    
+* Este repositório contém o modelo de banco de dados desenvolvido como Trabalho Interdisciplinar do 3º semestre, na disciplina de Banco de Dados. A base armazena informações sobre clientes, funcionários, mesas e reservas, dando suporte às operações essenciais de um restaurante.
 
 # **Tecnologia utilizada:**
 * SQL Server
